@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import javafx.scene.control.TableColumn;
-import netscape.javascript.JSObject;
+
 
 public class Main extends Application {
 
