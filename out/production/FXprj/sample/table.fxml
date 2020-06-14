@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="798.0" prefWidth="1185.0" style="-fx-background-color: #2e3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller2">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="743.0" prefWidth="1185.0" style="-fx-background-color: #2e3348;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller2">
     <children>
-        <AnchorPane layoutY="90.0" prefHeight="310.0" prefWidth="700.0" style="-fx-background-color: #708090;">
+        <AnchorPane layoutX="40.0" layoutY="22.0" prefHeight="620.0" prefWidth="1203.0" style="-fx-background-color: #708090;">
          <children>
-            <StackPane fx:id="pl" layoutX="-1.0" prefHeight="723.0" prefWidth="290.0" style="-fx-background-color: bbbbbb;">
+            <StackPane fx:id="pl" layoutX="-1.0" prefHeight="710.0" prefWidth="290.0" style="-fx-background-color: bbbbbb;">
                <effect>
                   <BoxBlur width="0.0" />
                </effect></StackPane>
-            <TextArea fx:id="txt1" blendMode="MULTIPLY" layoutX="290.0" onMouseDragExited="#initialize" prefHeight="589.0" prefWidth="913.0" scrollLeft="10.0" scrollTop="10.0" style="-fx-background-color: #708090;" text="Компьютер мен Билл Гейтс құдды егіз ұғымдай. Иә, дүниежүзі білетін Microsoft компаниясының негізін қалап, бізді &quot;терезелерге&quot; қаратып отырған осы кісі емес пе? Заманауи компьютерлік технологиялардың дамығаны осы кісінің қажырлы еңбегінің арқасы емес пе? " wrapText="true">
+            <TextArea fx:id="txt1" blendMode="MULTIPLY" layoutX="290.0" layoutY="7.0" onMouseDragExited="#initialize" prefHeight="420.0" prefWidth="913.0" scrollLeft="10.0" scrollTop="10.0" style="-fx-background-color: #708090;" text="Компьютер мен Билл Гейтс құдды егіз ұғымдай. Иә, дүниежүзі білетін Microsoft компаниясының негізін қалап, бізді &quot;терезелерге&quot; қаратып отырған осы кісі емес пе? Заманауи компьютерлік технологиялардың дамығаны осы кісінің қажырлы еңбегінің арқасы емес пе? " wrapText="true">
                <font>
                   <Font name="Baskerville Old Face" size="24.0" />
                </font></TextArea>
-            <TextArea fx:id="txt2" layoutX="290.0" layoutY="589.0" prefHeight="200.0" prefWidth="913.0" wrapText="true">
+            <TextArea fx:id="txt2" layoutX="290.0" layoutY="425.0" prefHeight="285.0" prefWidth="913.0" wrapText="true">
                <font>
                   <Font name="Arial" size="18.0" />
                </font>
