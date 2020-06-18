@@ -1,5 +1,5 @@
 package sample;
-
+import sample.Controller2;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +38,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+        System.out.println("public class Controller ");
         b1.setOnAction(actionEvent -> {
             System.out.println(t1.getCharacters());
             FXMLLoader loader = new FXMLLoader();
@@ -60,7 +61,11 @@ public class Controller {
             Parent root = loader.getRoot();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
+
             stage.showAndWait();
+
+
+            ;
         });
             b3.setOnAction(actionEvent -> {
             FXMLLoader loader = new FXMLLoader();
@@ -75,6 +80,19 @@ public class Controller {
 
             Stage stage = new Stage();
             Scene scene = new Scene(root);
+//                stage.titleProperty().bind(
+//                        scene.widthProperty().asString().
+//                                concat(" : ").
+//                                concat(scene.heightProperty().asString()));
+
+                stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+                    // Do whatever you want
+
+                });
+
+//                stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+//                    System.out.println("stage.getHeight()"+stage.getHeight());
+//                });
             stage.setScene(scene);
             stage.showAndWait();
         });

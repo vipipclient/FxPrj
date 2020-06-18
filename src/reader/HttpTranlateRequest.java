@@ -13,10 +13,21 @@ import java.util.List;
 import java.util.Map;
 
 public class HttpTranlateRequest {
-    HttpTranlateRequest(){
+    String lenguage = "kk-ru";
+    public String getLenguage() {
+        return lenguage;
+    }
+
+
+    public void setLenguage(String lenguage) {
+        this.lenguage = lenguage;
+    }
+
+
+    public HttpTranlateRequest(){
 
     }
-    public static String makeTranlation(String wordToTranslate)throws Throwable{
+    public  String makeTranlation(String wordToTranslate)throws Throwable{
         if ( wordToTranslate.isEmpty())
             return "";
 
@@ -24,7 +35,12 @@ public class HttpTranlateRequest {
         System.out.println("Продолжаем дальше пирп");
         try{
             String makeYaPostKz = "https://translate.yandex.net/api/v1/tr.json/translate?id=8c92ac22.5ee53713.7c1ef051-3-0&srv=tr-text&lang=kk-ru&reason=auto&format=text";
-            URI dsfs = new URI(makeYaPostKz);
+            String makeYaPostEng ="https://translate.yandex.net/api/v1/tr.json/translate?id=6b618e39.5ee883f6.2e3fd56f-1-0&srv=tr-text&lang=en-ru&reason=auto&format=text";
+            String makeYaPost = "https://translate.yandex.net/api/v1/tr.json/translate?id=6b618e39.5ee883f6.2e3fd56f-1-0&srv=tr-text&lang="+
+                    lenguage+
+                    "&reason=auto&format=text";
+
+            URI dsfs = new URI(makeYaPost);
             URL hp = new URL(dsfs.toASCIIString());
             HttpsURLConnection hpCon = (HttpsURLConnection) hp.openConnection();
             hpCon.setRequestMethod("POST");

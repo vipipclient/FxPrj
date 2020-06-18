@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
@@ -18,6 +19,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.PickResult;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -25,7 +28,13 @@ import reader.CheckWithLinkedHashMap;
 import reader.HttpTranlateRequest;
 import reader.TransletedHarryPotterWord;
 public class Controller2 {
+    @FXML
+    private Scene scene;
+    @FXML
+    private AnchorPane anchRoot;
 
+    @FXML // fx:id="h1"
+    private HBox h1; // Value injected by FXMLLoader
 
     @FXML
     private TextArea txt2;
@@ -52,7 +61,14 @@ public class Controller2 {
     private ImageView img1;
 
     @FXML
-    private Button b4;
+    private Scene getCurrentScene() {
+        System.out.println("anchRoot.getWidth()"+anchRoot.getWidth() + "anchRoot.getHeight()" +anchRoot.getHeight());
+        return anchRoot.getScene();
+
+    }
+
+//    @FXML
+//    private Button b4;
 
     private final ObservableList<Person> data
             = FXCollections.observableArrayList(
@@ -65,11 +81,39 @@ public class Controller2 {
 
     @FXML
     void initialize() {
-        System.out.println("void initialize() {");
-        b4.setOnAction(actionEvent -> {
+
+//        anchRoot.widthProperty().addListener((obs, oldVal, newVal)->{
+//            System.out.println("newVal.toString()"+newVal.toString());
+//        });
+
+        anchRoot.heightProperty().addListener((obs, oldVal, newVal)->{
+            System.out.println("newVal.toString());" + newVal.toString());
+            txt1.setPrefHeight((double) newVal/2-10);
+            txt2.setPrefHeight((double) newVal/2-10);
+           // h1.setPrefHeight((double) newVal/5);
+
+        });
+        txt1.setOnDragDetected(mouseEvent -> {
+            System.out.println("TXT DRAG" + mouseEvent.toString());
+
 
 
         });
+        //Create Http templete for requests
+        HttpTranlateRequest transSession = new HttpTranlateRequest();
+
+
+        Button btnKz = new Button("Қазақ");
+        Button btnEng = new Button("English");
+        h1.getChildren().addAll(btnKz,btnEng);
+  //      h1.setSpacing(10);
+        System.out.println("void initialize() {");
+        btnEng.setOnMouseClicked(actionEvent->{transSession.setLenguage("en-ru");});
+        btnKz.setOnMouseClicked(actionEvent->{transSession.setLenguage("kk-ru");});
+//        b4.setOnAction(actionEvent -> {
+//
+//
+//        });
         CheckWithLinkedHashMap checkWithLinkedHashMap =new CheckWithLinkedHashMap();
         Hwords = checkWithLinkedHashMap.GetTransletedHarryPotterWords();
         dataH.addAll(Hwords);
@@ -132,30 +176,23 @@ public class Controller2 {
 //        txt1.setOnMouseDragExited(mouseEvent -> System.out.println("setOnMouseDragExited"));
 
         txt2.setOnMouseClicked(mouseEvent -> {
+            System.out.println("anchRoot.getScene().getHeight()"+anchRoot.getScene().getHeight());
+            System.out.println(getCurrentScene());
 
         });
         txt1.setOnMouseClicked(mouseEvent -> {
-//            Cursor fgh = txt1.getCursor();
-//            if (mouseEvent.isControlDown() == true)
-//                System.out.println(txt1.getCaretPosition());
-//            System.out.println(txt1.getSelectedText());
 
-//            txt1.selectNextWord();
-//            txt1.selectPreviousWord();
-//            txt1.selectForward();
-//            txt1.selectEnd();
             System.out.println(txt1.getSelectedText());
             String Tranlate = "";
             try {
 
-                Tranlate = HttpTranlateRequest.makeTranlation( txt1.getSelectedText());
+                Tranlate = transSession.makeTranlation( txt1.getSelectedText());
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }
             txt2.setText(Tranlate );
 
-
-
         });
+
     }
 }
