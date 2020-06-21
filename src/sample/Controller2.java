@@ -88,9 +88,10 @@ public class Controller2 {
 
         anchRoot.heightProperty().addListener((obs, oldVal, newVal)->{
             System.out.println("newVal.toString());" + newVal.toString());
-            txt1.setPrefHeight((double) newVal/2-10);
+            txt1.setPrefHeight((double) newVal/2-12
+                );
             txt2.setPrefHeight((double) newVal/2-10);
-           // h1.setPrefHeight((double) newVal/5);
+            h1.setLayoutY((double) newVal/2-12);
 
         });
         txt1.setOnDragDetected(mouseEvent -> {

@@ -38,6 +38,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+        runTranslation();
         System.out.println("public class Controller ");
         b1.setOnAction(actionEvent -> {
             System.out.println(t1.getCharacters());
@@ -98,6 +99,24 @@ public class Controller {
         });
 
 
+    }
+    public  void  runTranslation(){
+        {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/sample/TextTranslate.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                System.out.println("table.fxml load error");
+                e.printStackTrace();
+            }
+            Parent root = loader.getRoot();
+
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
     }
 
 }
