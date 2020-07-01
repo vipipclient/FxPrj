@@ -27,6 +27,9 @@ import javafx.stage.Stage;
 import reader.CheckWithLinkedHashMap;
 import reader.HttpTranlateRequest;
 import reader.TransletedHarryPotterWord;
+
+import javax.xml.parsers.DocumentBuilder;
+
 public class Controller2 {
     @FXML
     private Scene scene;
@@ -82,9 +85,6 @@ public class Controller2 {
     @FXML
     void initialize() {
 
-//        anchRoot.widthProperty().addListener((obs, oldVal, newVal)->{
-//            System.out.println("newVal.toString()"+newVal.toString());
-//        });
 
         anchRoot.heightProperty().addListener((obs, oldVal, newVal)->{
             System.out.println("newVal.toString());" + newVal.toString());

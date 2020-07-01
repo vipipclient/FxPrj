@@ -2,6 +2,7 @@ package sample;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -46,10 +47,6 @@ public class ControllerTextTranslation {
 
     @FXML
     private void adjustOrientation(Number newVal) {
-        System.out.println("Number newVal :" + newVal +
-                "h1.getPrefHeight() :"+ h1.getPrefHeight()
-                );
-
         txt1.setPrefHeight((double) newVal/2-h1.getPrefHeight()/2);
         txt2.setPrefHeight((double) newVal/2-h1.getPrefHeight()/2);
         h1.setLayoutY((double) newVal/2-12);
@@ -65,10 +62,7 @@ public class ControllerTextTranslation {
     @FXML
     void initialize() {
         txt1.setOnMouseMoved(mouse -> {
-            System.out.println(mouse.getX());
-            txt1.selectPositionCaret(10);
-
-
+            System.out.println(txt1.getAnchor());
         });
         Button btnKz = new Button("Қазақ");
         Button btnEng = new Button("English");
@@ -101,6 +95,7 @@ public class ControllerTextTranslation {
             try {
 
                 Tranlate = transSession.makeTranlation( txt1.getSelectedText());
+                transSession.getXmlString();
             } catch (Throwable throwable) {
                 throwable.printStackTrace();
             }

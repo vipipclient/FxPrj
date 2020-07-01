@@ -9,7 +9,7 @@
 
 <AnchorPane fx:id="anchRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1185.0" style="-fx-background-color: #708090;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerTextTranslation">
     <children>
-      <HBox fx:id="h1" fillHeight="false" focusTraversable="true" layoutX="290.0" layoutY="342.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="37.0" prefWidth="277.0">
+      <HBox fx:id="h1" fillHeight="false" focusTraversable="true" layoutX="6.0" layoutY="345.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="31.0" prefWidth="622.0">
          <children>
             <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Button" />
             <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" text="Button" />
