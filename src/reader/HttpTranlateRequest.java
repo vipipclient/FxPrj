@@ -25,7 +25,7 @@ public class HttpTranlateRequest {
         return lenguage;
     }
 
-    public String getXmlString(){
+    public void getXmlString(){
         try {
             // Создается построитель документа
             DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -35,7 +35,7 @@ public class HttpTranlateRequest {
             // Получаем корневой элемент
             Node root = document.getDocumentElement();
 
-            System.out.println("List of books:");
+            System.out.println("List of settings :");
             System.out.println();
             // Просматриваем все подэлементы корневого - т.е. книги
             NodeList books = root.getChildNodes();
@@ -63,7 +63,6 @@ public class HttpTranlateRequest {
         } catch (IOException ex) {
             ex.printStackTrace(System.out);
         }
-        return "Done";
     }
 
     public void setLenguage(String lenguage) {

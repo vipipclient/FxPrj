@@ -62,7 +62,7 @@ public class ControllerTextTranslation {
     @FXML
     void initialize() {
         txt1.setOnMouseMoved(mouse -> {
-            System.out.println(txt1.getAnchor());
+          //  System.out.println(txt1.getAnchor());
         });
         Button btnKz = new Button("Қазақ");
         Button btnEng = new Button("English");
