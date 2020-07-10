@@ -13,14 +13,20 @@ import javafx.stage.Stage;
 
 import javafx.scene.control.TableColumn;
 
+import java.io.File;
+import java.util.HashMap;
+
 
 public class Main extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        System.out.println("current yandex Link is :" + appSettings.xmlLode());
-
+ //       System.out.println("current yandex Link is :" + AppSettings.load(new File("conf.xml")));
+        AppSettings.load(new File("conf.xml"));
+        HashMap asd = AppSettings.getSettingsHashMap();
+//        AppSettings.put("link","https://translate.yandex.net/api/v1/tr.json/translate?id=a0840ed9.5f06c2ac.4842985f-0-0&srv=tr-text&lang=");
+        AppSettings.save(new File("testing.xml"));
 
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));

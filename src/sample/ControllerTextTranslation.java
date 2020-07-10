@@ -7,11 +7,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import reader.HttpTranlateRequest;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -23,7 +25,10 @@ public class ControllerTextTranslation {
 
     @FXML // fx:id="h1"
     private HBox h1; // Value injected by FXMLLoader
-
+    @FXML
+    private TextField txtfield;
+    @FXML
+    private Button link;
     @FXML
     private TextArea txt2;
 
@@ -61,6 +66,19 @@ public class ControllerTextTranslation {
 
     @FXML
     void initialize() {
+        txtfield.setText((String) AppSettings.get("link"));
+        System.out.println("txtfield.getText(): " + txtfield.getText());
+        link.setOnMouseClicked(mouseEvent -> {
+
+            AppSettings.put("link",txtfield.getText());
+            try {
+                System.out.println("txtfield.getText(): " + txtfield.getText());
+                AppSettings.save(new File("testing.xml"));
+            } catch (Exception e) {
+                System.out.println("ERROR happened");
+                e.printStackTrace();
+            }
+        });
         txt1.setOnMouseMoved(mouse -> {
           //  System.out.println(txt1.getAnchor());
         });

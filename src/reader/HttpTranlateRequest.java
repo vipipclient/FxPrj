@@ -82,7 +82,7 @@ public class HttpTranlateRequest {
         try{
             String makeYaPostKz = "https://translate.yandex.net/api/v1/tr.json/translate?id=8c92ac22.5ee53713.7c1ef051-3-0&srv=tr-text&lang=kk-ru&reason=auto&format=text";
             String makeYaPostEng ="https://translate.yandex.net/api/v1/tr.json/translate?id=6b618e39.5ee883f6.2e3fd56f-1-0&srv=tr-text&lang=en-ru&reason=auto&format=text";
-            String makeYaPost = "https://translate.yandex.net/api/v1/tr.json/translate?id=8b344928.5ef77b27.59e0a7f8-3-0&srv=tr-text&lang="+
+            String makeYaPost = "https://translate.yandex.net/api/v1/tr.json/translate?id=a6f0a124.5f059b92.985ab0b8-0-0&srv=tr-text&lang="+
                     lenguage+
                     "&reason=auto&format=text";
 

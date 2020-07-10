@@ -39,7 +39,7 @@ public class XslConverter
 
     public static void main(String[] arg) throws IOException {
 
-        appSettings.xmlLode();
+        AppSettings.xmlLode();
 
         XslConverter c = new XslConverter();
 
