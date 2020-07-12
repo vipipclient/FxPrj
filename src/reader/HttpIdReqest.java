@@ -15,7 +15,7 @@ public class HttpIdReqest {
         StringBuffer bufa = new StringBuffer();
 
        try{
-           String makeReqest = "https://translate.yandex.ru/";
+           String makeReqest = "https://translate.yandex.ru/?clid=2233626";
            URI dsfs = new URI(makeReqest);
            URL hp = new URL(dsfs.toASCIIString());
 
@@ -46,7 +46,7 @@ public class HttpIdReqest {
            String token = htmlString.substring(htmlString.indexOf("SID: '") + "SID: '".length(), htmlString.indexOf("',", htmlString.indexOf("SID: '")));
            StringTokenizer st = new StringTokenizer(token," \r/,\\«.'~@#$%^_+{}[]><=&-*?!—:;`»()\n");
            while (st.hasMoreTokens())
-               System.out.println(st.nextToken());
+               System.out.println(new StringBuffer(st.nextToken()).reverse());
 //           System.out.println(gif.toString().substring(gif.toString().indexOf("SID: '")));;
 
 
