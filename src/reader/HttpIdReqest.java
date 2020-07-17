@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class HttpIdReqest {
-    public static void main(String args[]) throws UnknownHostException,MalformedURLException
+    public static String getId(String ... v) throws UnknownHostException,MalformedURLException
     {
         int ContentLength = 0;
         int cnt = 10;
@@ -45,14 +45,20 @@ public class HttpIdReqest {
            System.out.println(htmlString.substring(htmlString.indexOf("SID: '")+"SID: '".length(),htmlString.indexOf("',",htmlString.indexOf("SID: '"))));
            String token = htmlString.substring(htmlString.indexOf("SID: '") + "SID: '".length(), htmlString.indexOf("',", htmlString.indexOf("SID: '")));
            StringTokenizer st = new StringTokenizer(token," \r/,\\«.'~@#$%^_+{}[]><=&-*?!—:;`»()\n");
+           StringBuffer stringBuffer = new StringBuffer();
            while (st.hasMoreTokens())
-               System.out.println(new StringBuffer(st.nextToken()).reverse());
+               stringBuffer.append(new StringBuffer(st.nextToken()).reverse() + ".");
+           stringBuffer.deleteCharAt(stringBuffer.length()-1);
+//               System.out.println(new StringBuffer(st.nextToken()).reverse());
 //           System.out.println(gif.toString().substring(gif.toString().indexOf("SID: '")));;
+           System.out.println(stringBuffer.toString());
+           return stringBuffer.toString();
 
+        }catch (IOException | URISyntaxException e){System.out.println("EROOR");}finally {
+           System.out.println("end of Id reqest");
+       }
 
-        }catch (IOException | URISyntaxException e){System.out.println("EROOR");}
-
-
+        return "";
 
     }
 }

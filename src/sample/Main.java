@@ -12,6 +12,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import javafx.scene.control.TableColumn;
+import reader.HttpIdReqest;
 
 import java.io.File;
 import java.util.HashMap;
@@ -22,6 +23,14 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        HttpIdReqest.getId();
+        String stringArr[] = {"stringA","StringB","stringC"};
+        for (String a:stringArr) {
+            System.out.println(a);
+        }
+        Person a = new Person("", "", "");
+
+        System.exit(1);
  //       System.out.println("current yandex Link is :" + AppSettings.load(new File("conf.xml")));
         AppSettings.load(new File("conf.xml"));
         HashMap asd = AppSettings.getSettingsHashMap();
