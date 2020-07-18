@@ -2,7 +2,7 @@ package sample;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Person {
+public class Person implements Cloneable {
 
     private final SimpleStringProperty firstName;
     private final SimpleStringProperty lastName;

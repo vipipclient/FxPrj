@@ -31,6 +31,7 @@ public class ExplicitChannelRead {
         //3)add all tokens to Hashtable without repetition ,for each word count the number of occurrences in the text
         Hashtable<String,Integer> Harry = new Hashtable<String,Integer>();
         Map<String,Integer>  HarryHashMap = new HashMap<String, Integer>();
+
         String a;//auxiliary variable
         int cnt;//number of repittition
         TotalWords = st.countTokens();
@@ -44,8 +45,42 @@ public class ExplicitChannelRead {
                 Harry.put(a,1); //else, create element
                 HarryHashMap.put(a,1);//<<<<<<<<<<<new realisation
             }
-
         }
+        Set<Map.Entry<String,Integer>> asdf = new HashSet<Map.Entry<String, Integer>>() ;
+        asdf = HarryHashMap.entrySet();
+        Map<String,Integer> fdsa = new HashMap<String,Integer>();
+        for (Map.Entry<String,Integer> element:asdf) {
+            fdsa.put(element.getKey(),element.getValue());
+        }
+        List<String> test = new ArrayList<String>();
+        test.add("E");
+        test.add("G");
+        test.add("F");
+        test.add("A");
+        test.add("B");
+        test.add("C");
+        test.add("D");
+        Iterator<String> itr = test.iterator();
+        while (itr.hasNext())
+            if (itr.next() == "B")
+                itr.remove();
+            //(s1 , s2)->s1.compareTo(s2)
+        Collections.sort(test, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o2.compareTo(o1);
+            }
+        })   ;
+        System.out.println("Collections.frequency(test"+ test);
+
+
+
+//        Set<Map.Entry<String, Integer>> harrySet = HarryHashMap.entrySet();
+//        harrySet.forEach((it)->{
+//            System.out.println("it.getValue() : "+it.getValue() +" it.getKey() : "+ it.getKey());
+//        });
+//        System.out.println("");
+//        System.exit(0);
 
         //4) Sort the words alphabetically using TreeMap
 
@@ -53,7 +88,8 @@ public class ExplicitChannelRead {
 
         String words ;
         wordsOftext = Harry.keys();
-        TreeMap<String,Integer> SortWords = new TreeMap<String,Integer>(new ReverseCmp());
+//        TreeMap<String,Integer> SortWords = new TreeMap<String,Integer>(new ReverseCmp());
+        TreeMap<String,Integer> SortWords = new TreeMap<String,Integer>(ReverseCmp::compare);
         while (wordsOftext.hasMoreElements()){
             words = wordsOftext.nextElement();
             SortWords.put(words,HarryHashMap.get(words));//<<<<<<<<<<<<<<<<<<<<<<
@@ -140,18 +176,27 @@ class MyCmp implements Comparator<HarryPotterWord>{
 
     }
 }
-class ReverseCmp implements Comparator<String>{
+class  ReverseCmp {
 
-    public int compare(String word1, String word2){
+    public static int compare(String word1, String word2){
         String aStr = word1;
         String bStr = word2;
         return bStr.compareTo(aStr);
+
 
     }
 }
 
 
-
+//class  ReverseCmp implements Comparator<String>{
+//
+//public int compare(String word1, String word2){
+//        String aStr = word1;
+//        String bStr = word2;
+//        return bStr.compareTo(aStr);
+//
+//        }
+//        }
 
 
 
