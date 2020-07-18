@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Untitled</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+    </style>
+
+    <script>
+window.addEventListener("DOMContentLoaded", function() {
+    var btn = document.querySelector("#btn"),
+    txt = document.querySelector("#en"),
+    ru = document.querySelector("#ru") ;
+    btn.addEventListener("click", function() {
+var request = new XMLHttpRequest();
+var text = encodeURIComponent(txt.value);
+var key = "получить ключ бесплатно https://tech.yandex.com/key/form.xml?service=trnsl";
+var url = "https://translate.yandex.net/api/v1.5/tr.json/translate?key="+key+"&text="+text+"&lang=en-ru&format=plain&options=1"
+request.open('GET', url, true);
+request.onload = function() {
+  if (request.status >= 200 && request.status < 400) {
+    var data = JSON.parse(request.responseText);
+    ru.value = data.text;
+  }
+};
+request.send();
+    });
+});
+  </script>
+
+    </script>
+</head>
+
+<body>
+<textarea id="en" name="">word</textarea>
+<input id="btn" name="" type="button" value="translate">
+<textarea id="ru" name=""></textarea>
+
+</body>
+</html>
