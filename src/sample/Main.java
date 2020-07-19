@@ -1,36 +1,26 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import javafx.scene.control.TableColumn;
 import reader.HttpIdReqest;
 
 import java.io.File;
 import java.util.HashMap;
 
-
+interface FunctionTest{
+    void func(String x);
+}
 public class Main extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        HttpIdReqest.getId();
-        String stringArr[] = {"stringA","StringB","stringC"};
-        for (String a:stringArr) {
-            System.out.println(a);
-        }
+ //       HttpIdReqest.getId();
         Person a = new Person("", "", "");
 
-        System.exit(1);
  //       System.out.println("current yandex Link is :" + AppSettings.load(new File("conf.xml")));
         AppSettings.load(new File("conf.xml"));
         HashMap asd = AppSettings.getSettingsHashMap();
@@ -39,7 +29,7 @@ public class Main extends Application {
 
 
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("Ilyas Text Translator ");
        primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.setMaxWidth(710);
         primaryStage.setMaxHeight(410);

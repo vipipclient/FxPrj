@@ -6,6 +6,8 @@ import java.nio.ByteBuffer;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.*;
 import java.util.*;
+import java.util.stream.Collectors;
+
 /*
 * 1)Open file of Harry Potter book,copy the text of file in String in,close file
 * 2)parse the tokens and write them in : StringTokenizer st
@@ -75,12 +77,16 @@ public class ExplicitChannelRead {
 
 
 
-//        Set<Map.Entry<String, Integer>> harrySet = HarryHashMap.entrySet();
-//        harrySet.forEach((it)->{
-//            System.out.println("it.getValue() : "+it.getValue() +" it.getKey() : "+ it.getKey());
-//        });
-//        System.out.println("");
-//        System.exit(0);
+//    *****************************************************************
+        List<Map.Entry<String, Integer>> sortedColletion = HarryHashMap.entrySet()
+                .stream().sorted((t1, t2) -> {
+            if (t2.getValue() - t1.getValue() == 0)
+                return t1.getKey().compareTo(t2.getKey());
+            else
+                return t1.getValue() - t2.getValue();
+        }).collect(Collectors.toList());
+        System.out.println();
+//     ****************************************************************
 
         //4) Sort the words alphabetically using TreeMap
 
@@ -110,9 +116,11 @@ public class ExplicitChannelRead {
              FileWriter fout2 = new FileWriter("SortedHarryHashMap.txt")){
  //           SortedHarryHashMap.forEach((key,value) ->{fout2.write(key.toString());});
             StringBuffer buf_SortedHarryHashMap = new StringBuffer();
-            SortedHarryHashMap.forEach((key,value) -> {
-                buf_SortedHarryHashMap.append(String.format(key + " " + value.toString() + " "));
-            });
+            sortedColletion.forEach(element->{buf_SortedHarryHashMap.append(String.
+                    format(element.getKey() + " " + element.getValue() + " "));});
+//            SortedHarryHashMap.forEach((key,value) -> {
+//                buf_SortedHarryHashMap.append(String.format(key + " " + value.toString() + " "));
+//            });
             fout2.write(buf_SortedHarryHashMap.toString());
             for (HarryPotterWord o : HarryPotterWordArray)
                 fout.write(o.toString());

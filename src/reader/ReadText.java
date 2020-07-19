@@ -1,11 +1,14 @@
 package reader;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /*
 * 1)Open file of Harry Potter book,copy the text of file in String in,close file
@@ -56,7 +59,15 @@ public class ReadText {
             }
 
         }
+//    *****************************************************************
+        List<Map.Entry<String, Integer>> sortedColletion = HarryHashMap.entrySet()
+                .stream().sorted((t1, t2) -> {
+                    return  ((t2.getValue() - t1.getValue()) == 0) ?
+                            t1.getKey().compareTo(t2.getKey()) : (t2.getValue() - t1.getValue());
+                }).collect(Collectors.toList());
+        System.out.println();
 
+//     ****************************************************************
         //4) Sort the words alphabetically using TreeMap
 
         Enumeration<String> wordsOftext;
@@ -84,8 +95,9 @@ public class ReadText {
              FileWriter fout2 = new FileWriter("SortedHarryHashMap.txt")){
  //           SortedHarryHashMap.forEach((key,value) ->{fout2.write(key.toString());});
             StringBuffer buf_SortedHarryHashMap = new StringBuffer();
-            SortedHarryHashMap.forEach((key,value) -> {
-                buf_SortedHarryHashMap.append(String.format(key + " " + value.toString() + " "));
+            sortedColletion.forEach((element) -> {
+                buf_SortedHarryHashMap.append(String.format(element.getKey() + " " +
+                        element.getValue() + " "));
             });
             fout2.write(buf_SortedHarryHashMap.toString());
             for (HarryPotterWord o : HarryPotterWordArray)

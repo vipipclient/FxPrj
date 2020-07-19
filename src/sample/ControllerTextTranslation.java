@@ -11,10 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import reader.HttpIdReqest;
 import reader.HttpTranlateRequest;
 
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 public class ControllerTextTranslation {
@@ -70,7 +73,13 @@ public class ControllerTextTranslation {
         System.out.println("txtfield.getText(): " + txtfield.getText());
         link.setOnMouseClicked(mouseEvent -> {
 
-            AppSettings.put("link",txtfield.getText());
+            try {
+                AppSettings.put("link", HttpIdReqest.getId());
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             try {
                 System.out.println("txtfield.getText(): " + txtfield.getText());
                 AppSettings.save(new File("testing.xml"));
@@ -79,9 +88,7 @@ public class ControllerTextTranslation {
                 e.printStackTrace();
             }
         });
-        txt1.setOnMouseMoved(mouse -> {
-          //  System.out.println(txt1.getAnchor());
-        });
+
         Button btnKz = new Button("Қазақ");
         Button btnEng = new Button("English");
         h1.getChildren().addAll(btnKz,btnEng);
@@ -90,10 +97,7 @@ public class ControllerTextTranslation {
         anchRoot.heightProperty().addListener((obs, oldVal, newVal)->{
             adjustOrientation(newVal);
         });
-        txt1.setOnDragDetected(mouseEvent -> {
-            System.out.println("TXT DRAG" + mouseEvent.toString());
 
-        });
         //Create Http templete for requests
         HttpTranlateRequest transSession = new HttpTranlateRequest();
 
@@ -101,11 +105,7 @@ public class ControllerTextTranslation {
         btnEng.setOnMouseClicked(actionEvent->{transSession.setLenguage("en-ru");});
         btnKz.setOnMouseClicked(actionEvent->{transSession.setLenguage("kk-ru");});
 
-        txt2.setOnMouseClicked(mouseEvent -> {
-            System.out.println("anchRoot.getScene().getHeight()"+anchRoot.getScene().getHeight());
-            System.out.println(getCurrentScene());
 
-        });
         txt1.setOnMouseClicked(mouseEvent -> {
 
             System.out.println(txt1.getSelectedText());

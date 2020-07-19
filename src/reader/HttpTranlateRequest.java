@@ -82,7 +82,7 @@ public class HttpTranlateRequest {
         try{
             String makeYaPostKz = "https://translate.yandex.net/api/v1/tr.json/translate?id=8c92ac22.5ee53713.7c1ef051-3-0&srv=tr-text&lang=kk-ru&reason=auto&format=text";
             String makeYaPostEng ="https://translate.yandex.net/api/v1/tr.json/translate?id=6b618e39.5ee883f6.2e3fd56f-1-0&srv=tr-text&lang=en-ru&reason=auto&format=text";
-            String makeYaPost = "https://translate.yandex.net/api/v1/tr.json/translate?id=a6f0a124.5f059b92.985ab0b8-0-0&srv=tr-text&lang="+
+            String makeYaPost = "https://translate.yandex.net/api/v1/tr.json/translate?id="+((String) sample.AppSettings.get("link"))+"-2-0&srv=tr-text&lang=" +
                     lenguage+
                     "&reason=auto&format=text";
 
@@ -156,7 +156,7 @@ public class HttpTranlateRequest {
            String localHost  = "http://localhost";
            String makeYaPost = "https://translate.yandex.net/api/v1/tr.json/translate?id=b5e22b11.5ed13d92.5bba1006-1-0&srv=tr-text&lang=en-ru&reason=paste&format=text";
            String makeYaPostKz = "https://translate.yandex.net/api/v1/tr.json/translate?id=b5e22b11.5ed13d92.5bba1006-13-0&srv=tr-text&lang=kk-ru&reason=paste&format=text";
-           String troubleYa =    "https://translate.yandex.net/api/v1/tr.json/translate?id=dada2289.5eda9435.02c008e6-6-0&srv=tr-text&lang=kk-ru&reason=paste&format=text";
+           String troubleYa =    "https://translate.yandex.net/api/v1/tr.json/translate?id=ee833c16.5f130edf.01be22ae.74722d74657874-2-0&srv=tr-text&lang=kk-ru&reason=auto&format=text";
            URI dsfs = new URI(troubleYa);
            URL hp = new URL(dsfs.toASCIIString());
 
